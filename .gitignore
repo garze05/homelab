@@ -1,0 +1,10 @@
+.DS_STORE
+.env
+*.key
+*.pem
+secrets/
+data/
+volumes/
+backups/
+*.db
+*.sqlite

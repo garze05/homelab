@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:v2.30.0
+    container_name: filebrowser
+    restart: unless-stopped
+    volumes:
+      # Montamos la raiz de tu usuario o la carpeta /storage para explorar todo el sistema
+      - /:/srv
+      - ./config/filebrowser.db:/database/filebrowser.db
+      - ./config/settings.json:/config/settings.json
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
