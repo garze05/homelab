@@ -1,67 +1,10 @@
 services:
   adguardhome:
+    image: adguard/adguardhome
+    restart: unless-stopped
 
-    command:
-      - "--no-check-update"
-      - "-c"
-      - "/opt/adguardhome/conf/AdGuardHome.yaml"
-      - "-w"
-      - "/opt/adguardhome/work"
-
-    container_name: "adguardhome"
-
-    entrypoint:
-      - "/opt/adguardhome/AdGuardHome"
-
-    environment:
-      - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-    expose:
-      - "3000/tcp"
-      - "3000/udp"
-      - "443/tcp"
-      - "443/udp"
-      - "53/tcp"
-      - "53/udp"
-      - "5443/tcp"
-      - "5443/udp"
-      - "6060/tcp"
-      - "67/udp"
-      - "68/udp"
-      - "80/tcp"
-      - "853/tcp"
-      - "853/udp"
-
-    hostname: "metrobox"
-
-    image: "adguard/adguardhome"
-
-    ipc: "private"
-
-    labels:
-      maintainer: "AdGuard Team <devteam@adguard.com>"
-      org.opencontainers.image.authors: "AdGuard Team <devteam@adguard.com>"
-      org.opencontainers.image.created: "2026-08-18T15:25:41Z"
-      org.opencontainers.image.description: "Network-wide ads & trackers blocking DNS server"
-      org.opencontainers.image.documentation: "https://github.com/AdguardTeam/AdGuardHome/wiki/"
-      org.opencontainers.image.licenses: "GPL-3.0"
-      org.opencontainers.image.revision: "05ba17b282da1c4393d6a4ba4db0cf519194a362"
-      org.opencontainers.image.source: "https://github.com/AdguardTeam/AdGuardHome"
-      org.opencontainers.image.title: "AdGuard Home"
-      org.opencontainers.image.url: "https://adguard.com/en/adguard-home/overview.html"
-      org.opencontainers.image.vendor: "AdGuard"
-      org.opencontainers.image.version: "v0.107.79"
-
-    logging:
-      driver: "journald"
-      options: {}
-
-    network_mode: "host"
-
-    restart: "unless-stopped"
+    network_mode: host
 
     volumes:
-      - "/storage/adguardhome/conf:/opt/adguardhome/conf"
-      - "/storage/adguardhome/work:/opt/adguardhome/work"
-
-    working_dir: "/opt/adguardhome/work"
+      - /srv/docker/adguardhome/conf:/opt/adguardhome/conf
+      - /srv/docker/adguardhome/work:/opt/adguardhome/work
