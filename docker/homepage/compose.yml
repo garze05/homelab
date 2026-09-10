@@ -8,12 +8,19 @@ services:
 
     volumes:
       - /srv/docker/homepage/config:/app/config
+      - /opt/homelab/docker/homepage/assets:/app/public/assets:ro
 
     environment:
       HOMEPAGE_ALLOWED_HOSTS: "home.lab.gabrielro.com"
 
+    dns:
+      - 192.168.1.55
+
     networks:
       - proxy-net
+
+    env_file:
+      - .env
 
 networks:
   proxy-net:

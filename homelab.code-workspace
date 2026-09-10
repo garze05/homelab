@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Docker Runtime",
+			"path": "../../srv/docker"
+		},
+		{
+			"name": "Homelab Repo",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
